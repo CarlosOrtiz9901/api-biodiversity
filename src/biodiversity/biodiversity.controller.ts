@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { BiodiversityService } from './biodiversity.service';
 
 @Controller('biodiversity')
-export class BiodiversityController {}
+export class BiodiversityController {
+  constructor(private readonly biodiversityService: BiodiversityService) { }
+
+  @Get()
+  async update() {
+    return await this.biodiversityService.update(10);
+  }
+}

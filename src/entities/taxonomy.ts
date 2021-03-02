@@ -38,7 +38,7 @@ export class taxonomy {
   especie: string | null;
 
   @Column('character varying', {
-    name: 'NombreComun',
+    name: 'comun',
     nullable: true,
     length: 1024,
   })
@@ -52,46 +52,46 @@ export class taxonomy {
   categoria: string | null;
 
   @Column('character varying', {
-    name: 'EpitetoInfraespecifico',
+    name: 'infraespecifico',
     nullable: true,
     length: 1024,
   })
   epitetoInfraespecifico: string | null;
 
   @Column('character varying', {
-    name: 'RangoTaxonomico',
+    name: 'rango_taxonomico',
     nullable: true,
     length: 1024,
   })
   rangoTaxonomico: string | null;
 
   @Column('character varying', {
-    name: 'NombreCientifico',
+    name: 'nombre_cientifico',
     nullable: true,
     length: 1024,
   })
   nombreCientifico: string | null;
 
   @Column('character varying', {
-    name: 'NombreCientificoLiteral',
+    name: 'nombre_cientifico_literal',
     nullable: true,
     length: 1024,
   })
   nombreCientificoLiteral: string | null;
 
   @Column('character varying', {
-    name: 'AutoriaLiteralNombreCientifico',
+    name: 'autoria_literal_nombre_cientifico',
     nullable: true,
     length: 1024,
   })
   autoriaLiteralNombreCientifico: string | null;
 
   @Column('character varying', {
-    name: 'CodigoPais',
+    name: 'codigo_pais',
     nullable: true,
     length: 1024,
   })
-  CodigoPais: string | null;
+  codigoPais: string | null;
 
   @Column('character varying', {
     name: 'localidad',
@@ -101,21 +101,21 @@ export class taxonomy {
   localidad: string | null;
 
   @Column('character varying', {
-    name: 'ProvinciaEstado',
+    name: 'provincia_estado',
     nullable: true,
     length: 1024,
   })
   provinciaEstado: string | null;
 
   @Column('character varying', {
-    name: 'decimalLatitude',
+    name: 'latitude',
     nullable: true,
     length: 1024,
   })
   latitude: string | null;
 
   @Column('character varying', {
-    name: 'decimalLongitude',
+    name: 'longitude',
     nullable: true,
     length: 1024,
   })
@@ -145,7 +145,7 @@ export class taxonomy {
   basisofrecord: string | null;
 
   @Column('character varying', {
-    name: 'institutioncode',
+    name: 'institution_code',
     nullable: true,
     length: 1024,
   })
@@ -159,16 +159,10 @@ export class taxonomy {
   identifiedby: string | null;
 
   @Column('character varying', {
-    name: 'dateidentified',
+    name: 'date_identified',
     nullable: true,
     length: 1024,
   })
-  dateidentified: string | null;
+  dateIdentified: string | null;
 
-  @Column('character varying', {
-    name: 'column30',
-    nullable: true,
-    length: 1024,
-  })
-  column30: string | null;
 }
