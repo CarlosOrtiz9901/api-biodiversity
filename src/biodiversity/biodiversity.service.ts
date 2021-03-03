@@ -25,31 +25,30 @@ export class BiodiversityService {
       let { imagen, id } = await this.taxonomyRepository.findOne({ where: { id: value.id } })
 
       if (imagen.includes('http')) {
-        if (!imagen.includes('https://static.inaturalist.org/photos/'))
-          if (!imagen.includes('https://inaturalist-open-data.s3.amazonaws.com/photos/'))
-            if (!imagen.includes('http://creativesafari.com'))
-              if (!imagen.includes('https://upload.wikimedia.org'))
-                try {
-                  await page.goto(imagen, { waitUntil: 'networkidle2' });
-                  await page.setDefaultNavigationTimeout(10000);
+        if (!(imagen.includes('https://static.inaturalist.org/photos/') || imagen.includes('https://inaturalist-open-data.s3.amazonaws.com/photos/')))
+          if (!imagen.includes('http://creativesafari.com'))
+            if (!imagen.includes('https://upload.wikimedia.org'))
+              try {
+                await page.goto(imagen, { waitUntil: 'networkidle2' });
+                await page.setDefaultNavigationTimeout(10000);
 
-                  let urlTransformada = await page.$eval(("div[class='image-gallery-image'] > img[src]"), node => node.src);
-                  if (!urlTransformada)
-                    urlTransformada = KingdomTypeUrl.Animalia
+                let urlTransformada = await page.$eval(("div[class='image-gallery-image'] > img[src]"), node => node.src);
+                if (!urlTransformada)
+                  urlTransformada = KingdomTypeUrl.Animalia
 
-                  console.log(`id=${id}:`, await urlTransformada)
+                console.log(`id=${id}:`, await urlTransformada)
 
-                  await this.taxonomyRepository.update(id, { imagen: urlTransformada || imagen })
-                  await page.waitForTimeout(1000)
+                await this.taxonomyRepository.update(id, { imagen: urlTransformada || imagen })
+                await page.waitForTimeout(1000)
 
-                } catch (error) {
-                  await page.close();
-                  await browser.close();
-                  throw new BadRequestException({
-                    error: 'URL_NOT_UPDATED',
-                    detail: 'Los contenedores response y replay se encuentran vacios.'
-                  });
-                }
+              } catch (error) {
+                await page.close();
+                await browser.close();
+                throw new BadRequestException({
+                  error: 'URL_NOT_UPDATED',
+                  detail: 'Los contenedores response y replay se encuentran vacios.'
+                });
+              }
 
       } else {
         switch (value.reino) {
