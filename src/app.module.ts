@@ -10,7 +10,7 @@ import { BiodiversityModule } from './biodiversity/biodiversity.module';
   imports: [
     TypeOrmModule.forRoot(ConfigService.orm_config),
     CommonModule,
-    BiodiversityModule
+    BiodiversityModule,
   ],
   controllers: [AppController],
   providers: [AppService],

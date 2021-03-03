@@ -7,6 +7,6 @@ export class BiodiversityController {
 
   @Get()
   async update() {
-    return await this.biodiversityService.update(10);
+    return await this.biodiversityService.update();
   }
 }
