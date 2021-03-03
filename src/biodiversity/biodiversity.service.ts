@@ -41,7 +41,7 @@ export class BiodiversityService {
                 else if (imagen == KingdomTypeUrl.default)
                   await this.taxonomyRepository.update(id, { imagen })
                 else {
-                  browser = await puppeteer.launch({ headless: false, args: ["--disable-notifications"] })
+                  browser = await puppeteer.launch({ headless: true, args: ["--disable-notifications"] })
                   page = await browser.newPage();
 
                   await page.goto(imagen, { waitUntil: 'networkidle2' });
